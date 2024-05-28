@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.efrei.olympic_api.dto.LoginUserDto;
 import com.efrei.olympic_api.dto.RegisterUserDto;
 import com.efrei.olympic_api.model.Role;
-import com.efrei.olympic_api.model.RoleEnum;
+import com.efrei.olympic_api.enums.RoleEnum;
 import com.efrei.olympic_api.model.User;
 import com.efrei.olympic_api.repository.RoleRepository;
 import com.efrei.olympic_api.repository.UserRepository;

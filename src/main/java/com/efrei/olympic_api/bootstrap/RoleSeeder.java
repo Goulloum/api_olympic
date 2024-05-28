@@ -10,7 +10,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import com.efrei.olympic_api.model.Role;
-import com.efrei.olympic_api.model.RoleEnum;
+import com.efrei.olympic_api.enums.RoleEnum;
 import com.efrei.olympic_api.repository.RoleRepository;
 
 @Component

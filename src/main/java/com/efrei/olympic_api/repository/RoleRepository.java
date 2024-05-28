@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.efrei.olympic_api.model.Role;
-import com.efrei.olympic_api.model.RoleEnum;
+import com.efrei.olympic_api.enums.RoleEnum;
 
 @Repository
 public interface RoleRepository extends CrudRepository<Role, Integer> {

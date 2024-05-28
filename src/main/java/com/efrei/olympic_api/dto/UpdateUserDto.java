@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.efrei.olympic_api.model.RoleEnum;
+import com.efrei.olympic_api.enums.RoleEnum;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
