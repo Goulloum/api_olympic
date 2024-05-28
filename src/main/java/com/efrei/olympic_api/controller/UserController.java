@@ -73,7 +73,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable Integer id, @RequestBody UpdateUserDto user) {
+    public ResponseEntity<?> updateUser(@PathVariable Integer id, @Valid @RequestBody UpdateUserDto user) {
         boolean isUpdated = userService.updateUser(id, user);
 
         if (!isUpdated) {

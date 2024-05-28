@@ -20,6 +20,8 @@ import com.efrei.olympic_api.dto.UpdateTicketDto;
 import com.efrei.olympic_api.model.Ticket;
 import com.efrei.olympic_api.service.TicketService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/tickets")
 public class TicketController {
@@ -44,7 +46,7 @@ public class TicketController {
     }
 
     @PostMapping
-    public ResponseEntity<Ticket> createTicket(@RequestBody CreateTicketDto ticket) {
+    public ResponseEntity<Ticket> createTicket(@Valid @RequestBody CreateTicketDto ticket) {
 
         Ticket newTicket = ticketService.createTicket(ticket);
 
@@ -65,7 +67,7 @@ public class TicketController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Ticket> updateTicket(@PathVariable Integer id, @RequestBody UpdateTicketDto ticket) {
+    public ResponseEntity<Ticket> updateTicket(@PathVariable Integer id, @Valid @RequestBody UpdateTicketDto ticket) {
 
         Boolean isUpdated = ticketService.updateTicket(id, ticket);
 

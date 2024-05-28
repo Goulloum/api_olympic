@@ -19,6 +19,8 @@ import com.efrei.olympic_api.dto.UpdateEventDto;
 import com.efrei.olympic_api.model.Event;
 import com.efrei.olympic_api.service.EventService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/events")
 public class EventController {
@@ -43,7 +45,7 @@ public class EventController {
     }
 
     @PostMapping
-    public ResponseEntity<Event> createEvent(@RequestBody CreateEventDto event) {
+    public ResponseEntity<Event> createEvent(@Valid @RequestBody CreateEventDto event) {
 
         Event newEvent = eventService.createEvent(event);
 
@@ -59,7 +61,7 @@ public class EventController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Event> updateEvent(@PathVariable Integer id, @RequestBody UpdateEventDto event) {
+    public ResponseEntity<Event> updateEvent(@PathVariable Integer id, @Valid @RequestBody UpdateEventDto event) {
 
         eventService.updateEvent(id, event);
 
