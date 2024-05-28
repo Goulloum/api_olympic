@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.efrei.olympic_api.dto.CreateEventDto;
+import com.efrei.olympic_api.dto.PurchaseTicketDto;
 import com.efrei.olympic_api.dto.UpdateEventDto;
 import com.efrei.olympic_api.model.Event;
 import com.efrei.olympic_api.service.EventService;
@@ -64,6 +65,15 @@ public class EventController {
     public ResponseEntity<Event> updateEvent(@PathVariable Integer id, @Valid @RequestBody UpdateEventDto event) {
 
         eventService.updateEvent(id, event);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/{id}/purchaseTicket")
+    public ResponseEntity<Void> purchaseTicket(@PathVariable Integer id,
+            @Valid @RequestBody PurchaseTicketDto purchaseTicketDto) {
+
+        eventService.purchaseTicket(id, purchaseTicketDto);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

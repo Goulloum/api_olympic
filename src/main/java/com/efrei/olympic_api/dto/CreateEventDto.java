@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
@@ -17,7 +18,15 @@ public class CreateEventDto {
     private Date dateTime;
 
     @NotNull
+    @Min(1)
+    private Integer durationInMinute;
+
+    @NotNull
     private Boolean isActive;
+
+    @NotNull
+    @Min(1)
+    private Double ticketUnitPrice;
 
     @NotNull
     private Integer stadiumId;
@@ -52,6 +61,22 @@ public class CreateEventDto {
 
     public void setStadiumId(Integer stadiumId) {
         this.stadiumId = stadiumId;
+    }
+
+    public Integer getDurationInMinute() {
+        return durationInMinute;
+    }
+
+    public void setDurationInMinute(Integer durationInMinute) {
+        this.durationInMinute = durationInMinute;
+    }
+
+    public Double getTicketUnitPrice() {
+        return ticketUnitPrice;
+    }
+
+    public void setTicketUnitPrice(Double ticketUnitPrice) {
+        this.ticketUnitPrice = ticketUnitPrice;
     }
 
 }

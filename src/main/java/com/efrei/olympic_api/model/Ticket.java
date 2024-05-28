@@ -33,6 +33,9 @@ public class Ticket {
     @Column(nullable = false)
     private Boolean isInsured;
 
+    @Column(nullable = false)
+    private Integer quantity;
+
     @CreationTimestamp
     @Column(updatable = false, name = "created_at")
     private Date createdAt;
@@ -105,6 +108,14 @@ public class Ticket {
 
     public void setEvent(Event event) {
         this.event = event;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
 }

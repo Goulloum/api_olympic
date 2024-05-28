@@ -55,6 +55,7 @@ public class TicketService {
         newTicket.setPrice(ticket.getPrice());
         newTicket.setUser(user.get());
         newTicket.setEvent(event.get());
+        newTicket.setQuantity(ticket.getQuantity());
         newTicket.setOwnerFullName(ticket.getOwnerFullName());
         newTicket.setIsInsured(ticket.getIsInsured());
 
@@ -106,6 +107,7 @@ public class TicketService {
         updatedTicket.setPrice(ticket.getPrice());
         updatedTicket.setOwnerFullName(ticket.getOwnerFullName());
         updatedTicket.setUser(user.get());
+        updatedTicket.setQuantity(ticket.getQuantity());
         updatedTicket.setEvent(event.get());
         updatedTicket.setIsInsured(ticket.getIsInsured());
 

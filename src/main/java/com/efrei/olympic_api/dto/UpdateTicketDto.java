@@ -16,6 +16,10 @@ public class UpdateTicketDto {
     private Boolean isInsured;
 
     @NotNull
+    @Min(1)
+    private Integer quantity;
+
+    @NotNull
     private Integer userId;
 
     @NotNull
@@ -59,5 +63,13 @@ public class UpdateTicketDto {
 
     public void setEventId(Integer eventId) {
         this.eventId = eventId;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

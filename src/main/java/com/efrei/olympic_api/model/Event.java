@@ -6,7 +6,6 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
@@ -34,7 +33,13 @@ public class Event {
     private Date dateTime;
 
     @Column(nullable = false)
+    private Integer durationInMinute;
+
+    @Column(nullable = false)
     private Boolean isActive;
+
+    @Column(nullable = false)
+    private Double ticketUnitPrice;
 
     @CreationTimestamp
     @Column(updatable = false, name = "created_at")
@@ -109,4 +114,19 @@ public class Event {
         this.stadium = stadium;
     }
 
+    public Integer getDurationInMinute() {
+        return durationInMinute;
+    }
+
+    public void setDurationInMinute(Integer durationInMinute) {
+        this.durationInMinute = durationInMinute;
+    }
+
+    public Double getTicketUnitPrice() {
+        return ticketUnitPrice;
+    }
+
+    public void setTicketUnitPrice(Double ticketUnitPrice) {
+        this.ticketUnitPrice = ticketUnitPrice;
+    }
 }
