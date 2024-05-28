@@ -48,13 +48,9 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<User> findById(@PathVariable Integer id) {
-        Optional<User> user = userService.getUserById(id);
+        User user = userService.getUserById(id);
 
-        if (user.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-        return new ResponseEntity<>(user.get(), HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PostMapping()

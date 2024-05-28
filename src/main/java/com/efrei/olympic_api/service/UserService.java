@@ -40,8 +40,14 @@ public class UserService {
         return users;
     }
 
-    public Optional<User> getUserById(Integer id) {
-        return userRepository.findById(id);
+    public User getUserById(Integer id) {
+        Optional<User> user = userRepository.findById(id);
+
+        if (user.isEmpty()) {
+            throw new RessourceNotFoundException(EntityEnum.USER);
+        }
+
+        return user.get();
     }
 
     public User createUser(@Valid CreateUserDto user) {
@@ -75,7 +81,7 @@ public class UserService {
         Optional<User> userOptional = userRepository.findById(id);
 
         if (userOptional.isEmpty()) {
-            return false;
+            throw new RessourceNotFoundException(EntityEnum.USER);
         }
 
         User updatedUser = userOptional.get();

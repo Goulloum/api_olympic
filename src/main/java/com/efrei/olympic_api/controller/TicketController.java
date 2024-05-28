@@ -38,13 +38,9 @@ public class TicketController {
     @GetMapping("/{id}")
     public ResponseEntity<Ticket> findById(@PathVariable Integer id) {
 
-        Optional<Ticket> ticket = ticketService.getTicketById(id);
+        Ticket ticket = ticketService.getTicketById(id);
 
-        if (ticket.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-        return new ResponseEntity<>(ticket.get(), HttpStatus.OK);
+        return new ResponseEntity<>(ticket, HttpStatus.OK);
     }
 
     @PostMapping

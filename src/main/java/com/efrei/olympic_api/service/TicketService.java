@@ -62,9 +62,15 @@ public class TicketService {
 
     }
 
-    public Optional<Ticket> getTicketById(Integer id) {
+    public Ticket getTicketById(Integer id) {
 
-        return ticketRepository.findById(id);
+        Optional<Ticket> ticket = ticketRepository.findById(id);
+
+        if (ticket.isEmpty()) {
+            throw new RessourceNotFoundException(EntityEnum.TICKET);
+        }
+
+        return ticket.get();
     }
 
     public Boolean deleteTicket(Integer id) {
@@ -82,7 +88,7 @@ public class TicketService {
         Optional<Ticket> ticketOptional = ticketRepository.findById(id);
 
         if (ticketOptional.isEmpty()) {
-            return false;
+            throw new RessourceNotFoundException(EntityEnum.TICKET);
         }
 
         // Ensure new user exist
