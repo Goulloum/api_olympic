@@ -11,7 +11,6 @@ public class CreateStadiumDto {
     @NotEmpty
     private String city;
 
-    @NotEmpty
     @Min(1)
     private Integer capacity;
 

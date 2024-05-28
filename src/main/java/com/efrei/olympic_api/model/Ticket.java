@@ -5,6 +5,8 @@ import java.util.Date;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,10 +41,12 @@ public class Ticket {
     @Column(name = "updated_at")
     private Date updatedAt;
 
+    @JsonIgnoreProperties("tickets")
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @JsonIgnoreProperties("tickets")
     @ManyToOne
     @JoinColumn(name = "event_id", nullable = false)
     private Event event;

@@ -1,9 +1,21 @@
 package com.efrei.olympic_api.dto;
 
+import org.hibernate.validator.constraints.Length;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+
 public class RegisterUserDto {
 
+    @Email
+    @NotEmpty
     private String email;
+
+    @NotEmpty
+    @Length(min = 8)
     private String password;
+
+    @NotEmpty
     private String fullName;
 
     public String getEmail() {

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,7 +44,7 @@ public class StadiumController {
     }
 
     @PostMapping
-    public ResponseEntity<Stadium> createStadium(@Valid CreateStadiumDto stadium) {
+    public ResponseEntity<Stadium> createStadium(@Valid @RequestBody CreateStadiumDto stadium) {
 
         Stadium newStadium = stadiumService.createStadium(stadium);
 
@@ -59,7 +60,8 @@ public class StadiumController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Stadium> updateStadium(@PathVariable Integer id, @Valid CreateStadiumDto stadium) {
+    public ResponseEntity<Stadium> updateStadium(@PathVariable Integer id,
+            @Valid @RequestBody CreateStadiumDto stadium) {
 
         Stadium updatedStadium = stadiumService.updateStadium(id, stadium);
 

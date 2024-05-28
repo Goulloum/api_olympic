@@ -3,19 +3,20 @@ package com.efrei.olympic_api.dto;
 import java.util.Date;
 
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 public class UpdateEventDto {
 
     @NotEmpty
     private String name;
 
-    @NotEmpty
+    @NotNull
     private Date dateTime;
 
-    @NotEmpty
+    @NotNull
     private Boolean isActive;
 
-    @NotEmpty
+    @NotNull
     private Integer stadiumId;
 
     public String getName() {

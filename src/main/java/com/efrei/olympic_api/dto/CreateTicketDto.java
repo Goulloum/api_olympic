@@ -2,23 +2,23 @@ package com.efrei.olympic_api.dto;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 public class CreateTicketDto {
 
     @NotEmpty
     private String ownerFullName;
 
-    @NotEmpty
     @Min(0)
     private Double price;
 
-    @NotEmpty
+    @NotNull
     private Boolean isInsured;
 
-    @NotEmpty
+    @NotNull
     private Integer userId;
 
-    @NotEmpty
+    @NotNull
     private Integer eventId;
 
     public String getOwnerFullName() {

@@ -6,6 +6,9 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -45,6 +48,7 @@ public class Stadium {
     @Column(name = "updated_at")
     private Date updatedAt;
 
+    @JsonIgnoreProperties("stadium")
     @OneToMany(mappedBy = "stadium")
     private List<Event> events;
 
