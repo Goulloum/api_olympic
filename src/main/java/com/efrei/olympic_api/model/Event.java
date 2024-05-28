@@ -31,7 +31,7 @@ public class Event {
     private Date dateTime;
 
     @Column(nullable = false)
-    private Boolean isOpen;
+    private Boolean isActive;
 
     @CreationTimestamp
     @Column(updatable = false, name = "created_at")
@@ -72,12 +72,12 @@ public class Event {
         this.dateTime = dateTime;
     }
 
-    public Boolean getIsOpen() {
-        return isOpen;
+    public Boolean getIsActive() {
+        return isActive;
     }
 
-    public void setIsOpen(Boolean isOpen) {
-        this.isOpen = isOpen;
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
     }
 
     public Date getCreatedAt() {
