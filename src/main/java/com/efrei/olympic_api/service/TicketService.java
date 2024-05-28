@@ -56,6 +56,7 @@ public class TicketService {
         newTicket.setUser(user.get());
         newTicket.setEvent(event.get());
         newTicket.setOwnerFullName(ticket.getOwnerFullName());
+        newTicket.setIsInsured(ticket.getIsInsured());
 
         return ticketRepository.save(newTicket);
 
@@ -94,6 +95,7 @@ public class TicketService {
         updatedTicket.setOwnerFullName(ticket.getOwnerFullName());
         updatedTicket.setUser(user.get());
         updatedTicket.setEvent(event.get());
+        updatedTicket.setIsInsured(ticket.getIsInsured());
 
         ticketRepository.save(updatedTicket);
 
