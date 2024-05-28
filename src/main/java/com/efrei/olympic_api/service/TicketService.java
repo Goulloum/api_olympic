@@ -68,6 +68,12 @@ public class TicketService {
     }
 
     public Boolean deleteTicket(Integer id) {
+        Optional<Ticket> ticket = ticketRepository.findById(id);
+
+        if (ticket.isEmpty()) {
+            throw new RessourceNotFoundException(EntityEnum.TICKET);
+        }
+
         ticketRepository.deleteById(id);
         return true;
     }

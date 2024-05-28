@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.efrei.olympic_api.dto.CreateUserDto;
 import com.efrei.olympic_api.dto.UpdateUserDto;
+import com.efrei.olympic_api.enums.EntityEnum;
+import com.efrei.olympic_api.exception.RessourceNotFoundException;
 import com.efrei.olympic_api.model.Role;
 import com.efrei.olympic_api.model.User;
 import com.efrei.olympic_api.repository.RoleRepository;
@@ -59,7 +61,13 @@ public class UserService {
     }
 
     public boolean deleteUser(Integer id) {
-        userRepository.deleteById(id);
+        Optional<User> user = userRepository.findById(id);
+
+        if (user.isEmpty()) {
+            throw new RessourceNotFoundException(EntityEnum.USER);
+        }
+
+        userRepository.delete(user.get());
         return true;
     }
 
