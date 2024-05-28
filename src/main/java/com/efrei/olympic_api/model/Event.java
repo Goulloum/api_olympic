@@ -1,6 +1,6 @@
 package com.efrei.olympic_api.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
