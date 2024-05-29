@@ -1,0 +1,38 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8000
+    depends_on:
+      - db
+    volumes:
+      - ./dockerconfig:/config
+    environment:
+      - CONFIG_LOCATION=file:/config/application.properties
+    restart: always
+    networks:
+      - olympic_api_network
+  db:
+    image: mysql:5.7
+    container_name: olympic_api_db
+    environment:
+      MYSQL_ROOT_PASSWORD: d6jWcPGB#y@UFg43zRs95T
+      MYSQL_DATABASE: olympic_api
+      MYSQL_USER: olympic
+      MYSQL_PASSWORD: mypassword
+    ports:
+      - "4069:3306"
+    volumes:
+      - dbData:/var/lib/mysql
+    networks:
+      - olympic_api_network
+
+networks:
+  olympic_api_network:
+    driver: bridge
+
+volumes:
+  dbData:
