@@ -138,7 +138,7 @@ public class EventService {
 
         //Unsure there are enough tickets available 
 
-        Integer purchasedTickets = ticketRepository.countTicketsByEventId(id);
+        Integer purchasedTickets = ticketRepository.sumQuantityByEventId(id);
 
         if (purchasedTickets + purchaseTicketDto.getQuantity() > event.get().getTicketsAvailable()) {
             throw new NotEnoughTicketException(event.get(), event.get().getTicketsAvailable() - purchasedTickets);

@@ -13,6 +13,7 @@ import com.efrei.olympic_api.dto.UpdateUserDto;
 import com.efrei.olympic_api.enums.EntityEnum;
 import com.efrei.olympic_api.exception.RessourceNotFoundException;
 import com.efrei.olympic_api.model.Role;
+import com.efrei.olympic_api.model.Ticket;
 import com.efrei.olympic_api.model.User;
 import com.efrei.olympic_api.repository.RoleRepository;
 import com.efrei.olympic_api.repository.UserRepository;
@@ -98,6 +99,16 @@ public class UserService {
         userRepository.save(updatedUser);
 
         return true;
+    }
+
+    public List<Ticket> getUserTickets(Integer id) {
+        Optional<User> user = userRepository.findById(id);
+
+        if (user.isEmpty()) {
+            throw new RessourceNotFoundException(EntityEnum.USER);
+        }
+
+        return user.get().getTickets();
     }
 
 }

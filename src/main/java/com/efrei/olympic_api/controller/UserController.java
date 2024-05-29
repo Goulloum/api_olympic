@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.efrei.olympic_api.dto.CreateUserDto;
 import com.efrei.olympic_api.dto.UpdateUserDto;
+import com.efrei.olympic_api.model.Ticket;
 import com.efrei.olympic_api.model.User;
 import com.efrei.olympic_api.service.UserService;
 
@@ -89,5 +90,24 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
     }
+
+    @GetMapping("/{id}/tickets")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<Ticket>> getUserTickets(@PathVariable Integer id) {
+        List<Ticket> tickets = userService.getUserTickets(id);
+
+        return new ResponseEntity<>(tickets, HttpStatus.OK);
+    }
+
+    @GetMapping("/me/tickets")
+    public ResponseEntity<List<Ticket>> getAuthenticatedUserTickets() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        User currentUser = (User) authentication.getPrincipal();
+        List<Ticket> tickets = userService.getUserTickets(currentUser.getId());
+
+        return new ResponseEntity<>(tickets, HttpStatus.OK);
+    }
+
 
 }
