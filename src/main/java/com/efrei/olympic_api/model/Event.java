@@ -41,6 +41,9 @@ public class Event {
     @Column(nullable = false)
     private Double ticketUnitPrice;
 
+    @Column(nullable = false)
+    private Integer ticketsAvailable;
+
     @CreationTimestamp
     @Column(updatable = false, name = "created_at")
     private Date createdAt;
@@ -129,4 +132,13 @@ public class Event {
     public void setTicketUnitPrice(Double ticketUnitPrice) {
         this.ticketUnitPrice = ticketUnitPrice;
     }
+
+    public Integer getTicketsAvailable() {
+        return ticketsAvailable;
+    }
+
+    public void setTicketsAvailable(Integer ticketsAvailable) {
+        this.ticketsAvailable = ticketsAvailable;
+    }
+    
 }

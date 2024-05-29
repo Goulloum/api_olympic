@@ -26,6 +26,10 @@ public class UpdateEventDto {
     private Double ticketUnitPrice;
 
     @NotNull
+    @Min(1)
+    private Integer ticketsAvailable;
+
+    @NotNull
     private Boolean isActive;
 
     @NotNull
@@ -77,6 +81,14 @@ public class UpdateEventDto {
 
     public void setTicketUnitPrice(Double ticketUnitPrice) {
         this.ticketUnitPrice = ticketUnitPrice;
+    }
+
+    public Integer getTicketsAvailable() {
+        return ticketsAvailable;
+    }
+
+    public void setTicketsAvailable(Integer ticketsAvailable) {
+        this.ticketsAvailable = ticketsAvailable;
     }
 
 }

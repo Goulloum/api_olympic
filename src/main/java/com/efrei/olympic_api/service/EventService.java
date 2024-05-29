@@ -12,6 +12,7 @@ import com.efrei.olympic_api.dto.PurchaseTicketDto;
 import com.efrei.olympic_api.dto.UpdateEventDto;
 import com.efrei.olympic_api.enums.EntityEnum;
 import com.efrei.olympic_api.exception.EventOverlapseException;
+import com.efrei.olympic_api.exception.NotEnoughTicketException;
 import com.efrei.olympic_api.exception.RessourceNotFoundException;
 import com.efrei.olympic_api.model.Event;
 import com.efrei.olympic_api.model.Stadium;
@@ -71,6 +72,7 @@ public class EventService {
         newEvent.setDateTime(event.getDateTime());
         newEvent.setDurationInMinute(event.getDurationInMinute());
         newEvent.setTicketUnitPrice(event.getTicketUnitPrice());
+        newEvent.setTicketsAvailable(event.getTicketsAvailable());
         newEvent.setIsActive(event.getIsActive());
         newEvent.setStadium(stadium.get());
 
@@ -110,6 +112,7 @@ public class EventService {
         updatedEvent.setDurationInMinute(event.getDurationInMinute());
         updatedEvent.setIsActive(event.getIsActive());
         updatedEvent.setTicketUnitPrice(event.getTicketUnitPrice());
+        updatedEvent.setTicketsAvailable(event.getTicketsAvailable());
         updatedEvent.setStadium(stadium.get());
 
         eventRepository.save(updatedEvent);
@@ -132,6 +135,15 @@ public class EventService {
         if (user.isEmpty()) {
             throw new RessourceNotFoundException(EntityEnum.USER);
         }
+
+        //Unsure there are enough tickets available 
+
+        Integer purchasedTickets = ticketRepository.countTicketsByEventId(id);
+
+        if (purchasedTickets + purchaseTicketDto.getQuantity() > event.get().getTicketsAvailable()) {
+            throw new NotEnoughTicketException(event.get(), event.get().getTicketsAvailable() - purchasedTickets);
+        }
+
 
         // Unsure user doesn't already have a ticket for an event at the same time
         List<Ticket> tickets = user.get().getTickets();

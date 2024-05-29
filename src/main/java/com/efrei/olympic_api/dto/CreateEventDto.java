@@ -29,6 +29,10 @@ public class CreateEventDto {
     private Double ticketUnitPrice;
 
     @NotNull
+    @Min(1)
+    private Integer ticketsAvailable;
+
+    @NotNull
     private Integer stadiumId;
 
     public String getName() {
@@ -78,5 +82,15 @@ public class CreateEventDto {
     public void setTicketUnitPrice(Double ticketUnitPrice) {
         this.ticketUnitPrice = ticketUnitPrice;
     }
+
+    public Integer getTicketsAvailable() {
+        return ticketsAvailable;
+    }
+
+    public void setTicketsAvailable(Integer ticketsAvailable) {
+        this.ticketsAvailable = ticketsAvailable;
+    }
+
+    
 
 }
