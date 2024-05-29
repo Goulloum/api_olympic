@@ -199,4 +199,16 @@ public class EventService {
 
     }
 
+    public void cancelEvent(Integer id) {
+        Optional<Event> event = eventRepository.findById(id);
+
+        if (event.isEmpty()) {
+            throw new RessourceNotFoundException(EntityEnum.EVENT);
+        }
+
+        event.get().setIsActive(false);
+
+        eventRepository.save(event.get());
+    }
+
 }
