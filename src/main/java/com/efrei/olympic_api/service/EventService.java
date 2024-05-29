@@ -117,7 +117,7 @@ public class EventService {
         return true;
     }
 
-    public void purchaseTicket(Integer id, PurchaseTicketDto purchaseTicketDto) {
+    public Ticket purchaseTicket(Integer id, PurchaseTicketDto purchaseTicketDto) {
         // Unsure event exist
         Optional<Event> event = eventRepository.findById(id);
 
@@ -183,7 +183,7 @@ public class EventService {
         ticket.setUser(user.get());
         ticket.setEvent(event.get());
 
-        ticketRepository.save(ticket);
+        return ticketRepository.save(ticket);
 
     }
 

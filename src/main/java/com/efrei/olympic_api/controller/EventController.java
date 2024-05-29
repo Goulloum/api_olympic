@@ -18,6 +18,7 @@ import com.efrei.olympic_api.dto.CreateEventDto;
 import com.efrei.olympic_api.dto.PurchaseTicketDto;
 import com.efrei.olympic_api.dto.UpdateEventDto;
 import com.efrei.olympic_api.model.Event;
+import com.efrei.olympic_api.model.Ticket;
 import com.efrei.olympic_api.service.EventService;
 
 import jakarta.validation.Valid;
@@ -70,12 +71,12 @@ public class EventController {
     }
 
     @GetMapping("/{id}/purchaseTicket")
-    public ResponseEntity<Void> purchaseTicket(@PathVariable Integer id,
+    public ResponseEntity<Ticket> purchaseTicket(@PathVariable Integer id,
             @Valid @RequestBody PurchaseTicketDto purchaseTicketDto) {
 
-        eventService.purchaseTicket(id, purchaseTicketDto);
+        Ticket ticket =  eventService.purchaseTicket(id, purchaseTicketDto);
 
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(ticket, HttpStatus.CREATED);
     }
 
 }
